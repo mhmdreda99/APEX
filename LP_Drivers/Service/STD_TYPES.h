@@ -94,8 +94,13 @@ typedef union{
 }Register_32Bit;
 
 /* Any component will return error so we define the error here as it is common across all the modules*/
-#define ERROR_NOK             (uint8)0
-#define ERROR_OK              (uint8)1
+
+//Standard type for API's return type
+typedef enum{
+	E_OK,		//API status OK
+	E_NOK		//API status Not OK
+}StdReturn;
+
 
 
 
