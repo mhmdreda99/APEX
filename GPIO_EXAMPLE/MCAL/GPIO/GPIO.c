@@ -12,8 +12,7 @@
  */
 
 #include "GPIO.h"
-#include "../../Controller/ATMEGA16/Registers.h"
-#include "../../Service/STD_MACROS.h"
+
 
 /* Brief:	Initialize the GPIO driver
  * Details:	This API initialize the GPIO driver module by initializing all
@@ -231,7 +230,27 @@ StdReturn GPIO_togglePin(GPIO_port port, uint8 pin) {
  */
 StdReturn GPIO_readPin(GPIO_port port, uint8 pin, GPIO_pinState *state) {
 
-	// complete this function as we discussed
+	if (pin > MAX_PIN_NUMBER) {
+		return E_NOK;
+	} else {
+		switch (port) {
+		case GPIO_PORTA:
+			*state = READ_BIT(PINA, pin);
+			break;
+		case GPIO_PORTB:
+			*state = READ_BIT(PINB, pin);
+			break;
+		case GPIO_PORTC:
+			*state = READ_BIT(PINC, pin);
+			break;
+		case GPIO_PORTD:
+			*state = READ_BIT(PIND, pin);
+			break;
+		}
+	}
+
+	return E_OK;
+}
 
 /* Brief:	enable internal pull up resistor of a specific DIO pin
  * Details:	This API is used to enable the internal pull up resistor in specific pin of DIO
@@ -244,7 +263,56 @@ StdReturn GPIO_readPin(GPIO_port port, uint8 pin, GPIO_pinState *state) {
  */
 StdReturn GPIO_enablePullup(GPIO_port port, uint8 pin, GPIO_pullupEnable state) {
 
-// complete this function as we discussed
+	if (pin > MAX_PIN_NUMBER) {
+		return E_NOK;
+	} else {
+		switch (port) {
+		case GPIO_PORTA:
+			switch (state) {
+			case GPIO_PULLUP_DISABLE:
+				CLEAR_BIT(PORTA, pin);
+				break;
+			case GPIO_PULLUP_ENABLE:
+				SET_BIT(PORTA, pin);
+				break;
+			}
+			break;
+		case GPIO_PORTB:
+			switch (state) {
+			case GPIO_PULLUP_DISABLE:
+				CLEAR_BIT(PORTB, pin);
+				break;
+			case GPIO_PULLUP_ENABLE:
+				SET_BIT(PORTB, pin);
+				break;
+			}
+			break;
+		case GPIO_PORTC:
+			switch (state) {
+			case GPIO_PULLUP_DISABLE:
+				CLEAR_BIT(PORTC, pin);
+				break;
+			case GPIO_PULLUP_ENABLE:
+				SET_BIT(PORTC, pin);
+				break;
+			}
+			break;
+		case GPIO_PORTD:
+			switch (state) {
+			case GPIO_PULLUP_DISABLE:
+				CLEAR_BIT(PORTD, pin);
+				break;
+			case GPIO_PULLUP_ENABLE:
+				SET_BIT(PORTD, pin);
+				break;
+			}
+			break;
 
+		default:
+			return E_NOK;
+		}
+	}
+
+	return E_OK;
 }
 

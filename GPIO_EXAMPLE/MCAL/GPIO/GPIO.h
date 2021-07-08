@@ -18,7 +18,9 @@
 /***************************************************************
  *********************Includes section************************
  **************************************************************/
-#include "../../Service/STD_TYPES.h"
+#include "../../Service/StdTypes.h"
+#include "../../Controller/ATMEGA16/Registers.h"
+#include "../../Service/StdMacros.h"
 
 
 
