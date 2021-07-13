@@ -16,7 +16,7 @@
 #include <util/delay.h>
 
 void main(void)
-{
+
 	// Intialize GPIO
 	GPIO_init();
     // Set Pins Directions
