@@ -1,5 +1,5 @@
 # APEX Racing Team 
-This repo contains all tasks and assignments during LEARNING PHASE held to strenghten our Teammates core skills.
+This repo contains all tasks and assignments during **LEARNING PHASE** that will be held to strenghten our teammates **Embedded Systems Core** skills.
 
 ![Cover](https://github.com/mhmdreda99/APEXLP/blob/master/Images/137062611_746901259251908_2762067988998187256_n.jpg)
 
